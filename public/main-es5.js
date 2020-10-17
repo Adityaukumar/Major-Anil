@@ -5222,7 +5222,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     !*** ./src/app/services/index.ts ***!
     \***********************************/
 
-  /*! exports provided: AuthenticationService, UserService, AlertService */
+  /*! exports provided: AlertService, AuthenticationService, UserService */
 
   /***/
   function srcAppServicesIndexTs(module, __webpack_exports__, __webpack_require__) {
@@ -5369,7 +5369,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "getDonorList",
         value: function getDonorList(type) {
-          return this.http.get("http://localhost:8080/donor/donorList/".concat(type)); //DONORS-LIST BY TYPE
+          return this.http.get("/donor/donorList/".concat(type)); //DONORS-LIST BY TYPE
         }
       }, {
         key: "getReq",

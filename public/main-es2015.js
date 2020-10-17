@@ -2965,7 +2965,7 @@ AuthenticationService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 /*!***********************************!*\
   !*** ./src/app/services/index.ts ***!
   \***********************************/
-/*! exports provided: AuthenticationService, UserService, AlertService */
+/*! exports provided: AlertService, AuthenticationService, UserService */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3032,7 +3032,7 @@ let UserService = class UserService {
         return this.http.post(`/users/hospital`, data).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(e => this.handleError(e))); //HOSPITAL-SIGNUP
     }
     getDonorList(type) {
-        return this.http.get(`http://localhost:8080/donor/donorList/${type}`); //DONORS-LIST BY TYPE
+        return this.http.get(`/donor/donorList/${type}`); //DONORS-LIST BY TYPE
     }
     getReq(type) {
         return this.http.get(`/donor/getReq/${type}`).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(e => this.handleError(e))); //RECIEVED-NOTIF MESSAGE
