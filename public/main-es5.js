@@ -4120,15 +4120,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     var _services__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
     /*! ../services */
     "./src/app/services/index.ts");
-    /* harmony import */
-
-
-    var _angular_material__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
-    /*! @angular/material */
-    "./node_modules/@angular/material/esm2015/material.js");
 
     var NotifyComponent = /*#__PURE__*/function () {
-      function NotifyComponent(router, user, alert, snackBar, authentication) {
+      function NotifyComponent(router, user, alert, authentication) {
         var _this13 = this;
 
         _classCallCheck(this, NotifyComponent);
@@ -4136,10 +4130,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         this.router = router;
         this.user = user;
         this.alert = alert;
-        this.snackBar = snackBar;
         this.authentication = authentication;
         this.count = 0;
-        this.submitted = false;
         this.currentUserSubscription = this.authentication.currentUser.subscribe(function (user) {
           _this13.currentUser = user; //authenticated user data
         });
@@ -4166,19 +4158,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "attendRequest",
         value: function attendRequest(value1, value2) {
-          var _this14 = this;
-
           this.attending = true;
           this.alert.sentRequest(this.attending);
           this.user.delRequest(value1, value2).subscribe(function (data) {
             console.log(data), function (err) {
               return console.log(err);
-            }, _this14.submitted = true;
+            };
           });
-
-          if (this.submitted == true) {
-            this.snackBar.open("SMS sent", 'Dismiss');
-          }
         }
       }, {
         key: "ignoreRequest",
@@ -4198,8 +4184,6 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         type: _services_user_service__WEBPACK_IMPORTED_MODULE_2__["UserService"]
       }, {
         type: _services__WEBPACK_IMPORTED_MODULE_5__["AlertService"]
-      }, {
-        type: _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatSnackBar"]
       }, {
         type: _services_authentication_service__WEBPACK_IMPORTED_MODULE_4__["AuthenticationService"]
       }];
@@ -4340,14 +4324,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "openSpinner",
         value: function openSpinner() {
-          var _this15 = this;
+          var _this14 = this;
 
           var value = this.requestForm.value.type;
           this.isLoading = true;
           setTimeout(function () {
-            _this15.isLoading = false;
+            _this14.isLoading = false;
 
-            _this15.login(value);
+            _this14.login(value);
           }, 5000);
         }
       }, {
@@ -4785,14 +4769,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "openSpinner",
         value: function openSpinner() {
-          var _this16 = this;
+          var _this15 = this;
 
           var value = this.requestForm.value.type;
           this.isLoading = true;
           setTimeout(function () {
-            _this16.isLoading = false;
+            _this15.isLoading = false;
 
-            _this16.login(value);
+            _this15.login(value);
           }, 5000);
         }
       }, {
@@ -4877,7 +4861,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     var AlertService = /*#__PURE__*/function () {
       function AlertService(router) {
-        var _this17 = this;
+        var _this16 = this;
 
         _classCallCheck(this, AlertService);
 
@@ -4889,12 +4873,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
         router.events.subscribe(function (event) {
           if (event instanceof _angular_router__WEBPACK_IMPORTED_MODULE_2__["NavigationStart"]) {
-            if (_this17.keepAfterNavigationChange) {
+            if (_this16.keepAfterNavigationChange) {
               // only keep for a single location change
-              _this17.keepAfterNavigationChange = false;
+              _this16.keepAfterNavigationChange = false;
             } else {
               // clear alert
-              _this17.subject.next();
+              _this16.subject.next();
             }
           }
         });
@@ -5021,7 +5005,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     var AuthService = /*#__PURE__*/function () {
       function AuthService(afauth, afs, router) {
-        var _this18 = this;
+        var _this17 = this;
 
         _classCallCheck(this, AuthService);
 
@@ -5031,10 +5015,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         this.id = false;
         this.user = this.afauth.authState.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["switchMap"])(function (user) {
           if (user) {
-            _this18.id = true;
-            return _this18.afs.doc('users/${user.uid}').valueChanges();
+            _this17.id = true;
+            return _this17.afs.doc('users/${user.uid}').valueChanges();
           } else {
-            _this18.id = false;
+            _this17.id = false;
             return Object(rxjs__WEBPACK_IMPORTED_MODULE_6__["of"])(null);
           }
         }));
@@ -5186,7 +5170,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       _createClass(AuthenticationService, [{
         key: "login",
         value: function login(name, password) {
-          var _this19 = this;
+          var _this18 = this;
 
           return this.http.post("/users/authenticate", {
             name: name,
@@ -5197,7 +5181,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               // store user details and jwt token in local storage to keep user logged in between page refreshes
               localStorage.setItem('currentUser', JSON.stringify(user));
 
-              _this19.currentUserSubject.next(user);
+              _this18.currentUserSubject.next(user);
             }
 
             return user;
@@ -5367,60 +5351,60 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "registerData",
         value: function registerData(user) {
-          var _this20 = this;
+          var _this19 = this;
 
           return this.http.post("/users/register", user).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(function (e) {
-            return _this20.handleError(e);
+            return _this19.handleError(e);
           })); //USER-SIGNUP
         }
       }, {
         key: "registertion",
         value: function registertion(data) {
-          var _this21 = this;
+          var _this20 = this;
 
           return this.http.post("/users/hospital", data).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(function (e) {
-            return _this21.handleError(e);
+            return _this20.handleError(e);
           })); //HOSPITAL-SIGNUP
         }
       }, {
         key: "getDonorList",
         value: function getDonorList(type) {
-          return this.http.get("/donor/donorList/".concat(type)); //DONORS-LIST BY TYPE
+          return this.http.get("http://localhost:8080/donor/donorList/".concat(type)); //DONORS-LIST BY TYPE
         }
       }, {
         key: "getReq",
         value: function getReq(type) {
-          var _this22 = this;
+          var _this21 = this;
 
           return this.http.get("/donor/getReq/".concat(type)).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(function (e) {
-            return _this22.handleError(e);
+            return _this21.handleError(e);
           })); //RECIEVED-NOTIF MESSAGE
         }
       }, {
         key: "delRequest",
         value: function delRequest(id, type) {
-          var _this23 = this;
+          var _this22 = this;
 
           return this.http["delete"]("/donor/delReq/".concat(id, "/").concat(type)).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(function (e) {
-            return _this23.handleError(e);
+            return _this22.handleError(e);
           })); //ACCEPTED-REQUEST BY DONOR 
         }
       }, {
         key: "sendForm",
         value: function sendForm(data) {
-          var _this24 = this;
+          var _this23 = this;
 
           return this.http.post("/users/app", data).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(function (e) {
-            return _this24.handleError(e);
+            return _this23.handleError(e);
           })); //APPLICATION-FORM DATA
         }
       }, {
         key: "getAppointments",
         value: function getAppointments() {
-          var _this25 = this;
+          var _this24 = this;
 
           return this.http.get("/donor/appointment").pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(function (e) {
-            return _this25.handleError(e);
+            return _this24.handleError(e);
           })); //GET ALL APPOINTMENTS
         }
       }, {
@@ -5431,19 +5415,19 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "request",
         value: function request(req) {
-          var _this26 = this;
+          var _this25 = this;
 
           return this.http.post("/users/request", req).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(function (e) {
-            return _this26.handleError(e);
+            return _this25.handleError(e);
           })); //B-REQUEST DATA
         }
       }, {
         key: "orequest",
         value: function orequest(req) {
-          var _this27 = this;
+          var _this26 = this;
 
           return this.http.post("/users/orequest", req).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(function (e) {
-            return _this27.handleError(e);
+            return _this26.handleError(e);
           })); //O-REQUEST DATA
         }
       }, {
@@ -5628,13 +5612,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "openSpinner",
         value: function openSpinner() {
-          var _this28 = this;
+          var _this27 = this;
 
           this.isLoading = true;
           setTimeout(function () {
-            _this28.isLoading = false;
+            _this27.isLoading = false;
 
-            _this28.login();
+            _this27.login();
           }, 5000);
         } //end of openSpinner function
 
@@ -5763,13 +5747,20 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     var _services_alert_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
     /*! ../services/alert.service */
     "./src/app/services/alert.service.ts");
+    /* harmony import */
+
+
+    var _angular_material__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    /*! @angular/material */
+    "./node_modules/@angular/material/esm2015/material.js");
 
     var ViewPatientsComponent = /*#__PURE__*/function () {
-      function ViewPatientsComponent(router, user, alert, route) {
+      function ViewPatientsComponent(router, user, snackBar, alert, route) {
         _classCallCheck(this, ViewPatientsComponent);
 
         this.router = router;
         this.user = user;
+        this.snackBar = snackBar;
         this.alert = alert;
         this.route = route;
         this.text = "text-center";
@@ -5778,21 +5769,21 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       _createClass(ViewPatientsComponent, [{
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this29 = this;
+          var _this28 = this;
 
           this.route.paramMap.subscribe(function (params) {
             var val = params.get('value');
-            _this29.avail = val;
+            _this28.avail = val;
           });
           this.reloadData(this.avail);
         }
       }, {
         key: "reloadData",
         value: function reloadData(avail) {
-          var _this30 = this;
+          var _this29 = this;
 
           this.user.getDonorList(avail).subscribe(function (data) {
-            _this30.donors = data;
+            _this29.donors = data, _this29.submitted = true;
           });
         }
       }, {
@@ -5801,27 +5792,36 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           this.message1 = msg1;
           this.message2 = msg2;
           this.user.sendNotification(val);
-          this.openSpinner();
+          this.openSpinner(val);
         }
       }, {
         key: "openSpinner",
-        value: function openSpinner() {
-          var _this31 = this;
+        value: function openSpinner(val) {
+          var _this30 = this;
 
           this.isLoading = true;
+          console.log(val.name);
           setTimeout(function () {
-            _this31.isLoading = false;
+            _this30.isLoading = false;
 
-            _this31.get();
-          }, 5000);
+            if (_this30.submitted == true) {
+              _this30.openSnackBar("Message sent to " + val.name + "  !", 'Dismiss');
+            }
+          }, 4000);
+          this.get();
+        }
+      }, {
+        key: "openSnackBar",
+        value: function openSnackBar(message, action) {
+          this.snackBar.open(message, action);
         }
       }, {
         key: "get",
         value: function get() {
-          var _this32 = this;
+          var _this31 = this;
 
           this.alert.requestSource.subscribe(function (data) {
-            _this32.attending = data, console.log(_this32.attending);
+            _this31.attending = data;
           });
 
           if (this.attending == true) {
@@ -5842,6 +5842,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]
       }, {
         type: _services_user_service__WEBPACK_IMPORTED_MODULE_3__["UserService"]
+      }, {
+        type: _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatSnackBar"]
       }, {
         type: _services_alert_service__WEBPACK_IMPORTED_MODULE_4__["AlertService"]
       }, {
@@ -6062,7 +6064,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
   /***/
   function _(module, exports, __webpack_require__) {
     module.exports = __webpack_require__(
-    /*! c:\Angular\Major\src\main.ts */
+    /*! C:\Angular\Major\src\main.ts */
     "./src/main.ts");
     /***/
   }

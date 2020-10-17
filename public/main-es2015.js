@@ -2336,8 +2336,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
 /* harmony import */ var _services_authentication_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../services/authentication.service */ "./src/app/services/authentication.service.ts");
 /* harmony import */ var _services__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../services */ "./src/app/services/index.ts");
-/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm2015/material.js");
-
 
 
 
@@ -2345,14 +2343,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let NotifyComponent = class NotifyComponent {
-    constructor(router, user, alert, snackBar, authentication) {
+    constructor(router, user, alert, authentication) {
         this.router = router;
         this.user = user;
         this.alert = alert;
-        this.snackBar = snackBar;
         this.authentication = authentication;
         this.count = 0;
-        this.submitted = false;
         this.currentUserSubscription = this.authentication.currentUser.subscribe(user => {
             this.currentUser = user; //authenticated user data
         });
@@ -2374,10 +2370,7 @@ let NotifyComponent = class NotifyComponent {
     attendRequest(value1, value2) {
         this.attending = true;
         this.alert.sentRequest(this.attending);
-        this.user.delRequest(value1, value2).subscribe(data => { console.log(data), err => console.log(err), this.submitted = true; });
-        if (this.submitted == true) {
-            this.snackBar.open("SMS sent", 'Dismiss');
-        }
+        this.user.delRequest(value1, value2).subscribe(data => { console.log(data), err => console.log(err); });
     }
     ignoreRequest() {
         this.attending = false;
@@ -2388,7 +2381,6 @@ NotifyComponent.ctorParameters = () => [
     { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"] },
     { type: _services_user_service__WEBPACK_IMPORTED_MODULE_2__["UserService"] },
     { type: _services__WEBPACK_IMPORTED_MODULE_5__["AlertService"] },
-    { type: _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatSnackBar"] },
     { type: _services_authentication_service__WEBPACK_IMPORTED_MODULE_4__["AuthenticationService"] }
 ];
 NotifyComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -3040,7 +3032,7 @@ let UserService = class UserService {
         return this.http.post(`/users/hospital`, data).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(e => this.handleError(e))); //HOSPITAL-SIGNUP
     }
     getDonorList(type) {
-        return this.http.get(`/donor/donorList/${type}`); //DONORS-LIST BY TYPE
+        return this.http.get(`http://localhost:8080/donor/donorList/${type}`); //DONORS-LIST BY TYPE
     }
     getReq(type) {
         return this.http.get(`/donor/getReq/${type}`).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(e => this.handleError(e))); //RECIEVED-NOTIF MESSAGE
@@ -3248,15 +3240,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
 /* harmony import */ var _services_user_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../services/user.service */ "./src/app/services/user.service.ts");
 /* harmony import */ var _services_alert_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../services/alert.service */ "./src/app/services/alert.service.ts");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm2015/material.js");
+
 
 
 
 
 
 let ViewPatientsComponent = class ViewPatientsComponent {
-    constructor(router, user, alert, route) {
+    constructor(router, user, snackBar, alert, route) {
         this.router = router;
         this.user = user;
+        this.snackBar = snackBar;
         this.alert = alert;
         this.route = route;
         this.text = "text-center";
@@ -3270,26 +3265,33 @@ let ViewPatientsComponent = class ViewPatientsComponent {
     }
     reloadData(avail) {
         this.user.getDonorList(avail).subscribe(data => {
-            this.donors = data;
+            this.donors = data,
+                this.submitted = true;
         });
     }
     send(val, msg1, msg2) {
         this.message1 = msg1;
         this.message2 = msg2;
         this.user.sendNotification(val);
-        this.openSpinner();
+        this.openSpinner(val);
     }
-    openSpinner() {
+    openSpinner(val) {
         this.isLoading = true;
+        console.log(val.name);
         setTimeout(() => {
             this.isLoading = false;
-            this.get();
-        }, 5000);
+            if (this.submitted == true) {
+                this.openSnackBar("Message sent to " + val.name + "  !", 'Dismiss');
+            }
+        }, 4000);
+        this.get();
+    }
+    openSnackBar(message, action) {
+        this.snackBar.open(message, action);
     }
     get() {
         this.alert.requestSource.subscribe(data => {
-            this.attending = data,
-                console.log(this.attending);
+            this.attending = data;
         });
         if (this.attending == true) {
             this.attending = true;
@@ -3302,6 +3304,7 @@ let ViewPatientsComponent = class ViewPatientsComponent {
 ViewPatientsComponent.ctorParameters = () => [
     { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] },
     { type: _services_user_service__WEBPACK_IMPORTED_MODULE_3__["UserService"] },
+    { type: _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatSnackBar"] },
     { type: _services_alert_service__WEBPACK_IMPORTED_MODULE_4__["AlertService"] },
     { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"] }
 ];
@@ -3432,7 +3435,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_3__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! c:\Angular\Major\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! C:\Angular\Major\src\main.ts */"./src/main.ts");
 
 
 /***/ })

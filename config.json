@@ -1,5 +1,4 @@
 ﻿{
-    "connectionString":"mongodb+srv://dbUser:dbUser@cluster0.5u6uf.mongodb.net/major?retryWrites=true&w=majority",
+    "connectionString": "mongodb+srv://dbUser:dbUser@cluster0.5u6uf.mongodb.net/major?retryWrites=true&w=majority",
     "secret": "secret"
-} 
-
+}
