@@ -1,9 +1,10 @@
 ﻿require('rootpath')();
 const express = require('express');
-const app = express(); 
+const app = express();
 const cors = require('cors');
 const bodyParser = require('body-parser');
-var path=require('path');
+const dotenv = require('dotenv').config();
+var path = require('path');
 
 const errorHandler = require('_helpers/error-handler');
 
@@ -12,13 +13,13 @@ app.use(bodyParser.json());
 app.use(cors());
 
 // api routes
-app.use('/users',require('./routes/users.controller'));
-app.use('/donor',require('./routes/donor.controller'));
+app.use('/users', require('./routes/users.controller'));
+app.use('/donor', require('./routes/donor.controller'));
 
-app.use(express.static(path.join(__dirname,'public')));
+app.use(express.static(path.join(__dirname, 'public')));
 
-app.get("*",(req,res)=>{
-    res.sendFile(path.join(__dirname,'public/index.html'));
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, 'public/index.html'));
 })
 
 

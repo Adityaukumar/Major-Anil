@@ -1949,7 +1949,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony import */
 
 
-    var hammerjs__WEBPACK_IMPORTED_MODULE_31___default = /*#__PURE__*/__webpack_require__.n(hammerjs__WEBPACK_IMPORTED_MODULE_31__); // COMPONENTS
+    var hammerjs__WEBPACK_IMPORTED_MODULE_31___default = /*#__PURE__*/__webpack_require__.n(hammerjs__WEBPACK_IMPORTED_MODULE_31__);
+    /* harmony import */
+
+
+    var src_environments_environment_prod__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(
+    /*! src/environments/environment.prod */
+    "./src/environments/environment.prod.ts"); // COMPONENTS
 
 
     var MyHammerConfig = /*#__PURE__*/function (_angular_platform_bro) {
@@ -1975,17 +1981,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     }(_angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["HammerGestureConfig"]); // FIREBASE AUTH CONFIG
 
 
-    var firebaseConfig = {
-      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-      apiKey: "AIzaSyDY1QX-ZzUwRr8BDIwt2FQHWYG0-LmH8zU",
-      authDomain: "blooddonation-bf54c.firebaseapp.com",
-      databaseURL: "https://blooddonation-bf54c.firebaseio.com",
-      projectId: "blooddonation-bf54c",
-      storageBucket: "blooddonation-bf54c.appspot.com",
-      messagingSenderId: "1030357417339",
-      appId: "1:1030357417339:web:94b6d4085a7e86e511d1de",
-      measurementId: "G-PWYSL42CMR"
-    };
+    var firebaseConfig = src_environments_environment_prod__WEBPACK_IMPORTED_MODULE_32__["environment"].Auth;
 
     var AppModule = function AppModule() {
       _classCallCheck(this, AppModule);
@@ -1995,7 +1991,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       declarations: [_app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"], _app_routing_module__WEBPACK_IMPORTED_MODULE_3__["routingComponents"], _blooddonation_blooddonation_component__WEBPACK_IMPORTED_MODULE_9__["BlooddonationComponent"], _organdonation_organdonation_component__WEBPACK_IMPORTED_MODULE_10__["OrgandonationComponent"], _view_patients_view_patients_component__WEBPACK_IMPORTED_MODULE_19__["ViewPatientsComponent"], _news_news_component__WEBPACK_IMPORTED_MODULE_11__["NewsComponent"], _whytodonate_whytodonate_component__WEBPACK_IMPORTED_MODULE_12__["WhytodonateComponent"], _aboutus_aboutus_component__WEBPACK_IMPORTED_MODULE_13__["AboutusComponent"], _contactus_contactus_component__WEBPACK_IMPORTED_MODULE_14__["ContactusComponent"], _faq_faq_component__WEBPACK_IMPORTED_MODULE_15__["FaqComponent"], _orequest_orequest_component__WEBPACK_IMPORTED_MODULE_16__["OrequestComponent"], _login_login_component__WEBPACK_IMPORTED_MODULE_17__["LoginComponent"], _signup_signup_component__WEBPACK_IMPORTED_MODULE_18__["SignupComponent"], _hsignup_hsignup_component__WEBPACK_IMPORTED_MODULE_20__["HsignupComponent"], _donordboard_donordboard_component__WEBPACK_IMPORTED_MODULE_21__["DonordboardComponent"], _dprofile_dprofile_component__WEBPACK_IMPORTED_MODULE_22__["DprofileComponent"], _appform_appform_component__WEBPACK_IMPORTED_MODULE_23__["AppformComponent"], _notify_notify_component__WEBPACK_IMPORTED_MODULE_24__["NotifyComponent"], _page_not_found_page_not_found_component__WEBPACK_IMPORTED_MODULE_30__["PageNotFoundComponent"]],
       entryComponents: [_dprofile_dprofile_component__WEBPACK_IMPORTED_MODULE_22__["DprofileComponent"], _appform_appform_component__WEBPACK_IMPORTED_MODULE_23__["AppformComponent"], _notify_notify_component__WEBPACK_IMPORTED_MODULE_24__["NotifyComponent"]],
       imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"], _app_routing_module__WEBPACK_IMPORTED_MODULE_3__["AppRoutingModule"], _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_5__["BrowserAnimationsModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormsModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_6__["ReactiveFormsModule"], _angular_common_http__WEBPACK_IMPORTED_MODULE_7__["HttpClientModule"], _material_material_module__WEBPACK_IMPORTED_MODULE_8__["MaterialModule"], _agm_core__WEBPACK_IMPORTED_MODULE_25__["AgmCoreModule"].forRoot({
-        apiKey: 'AIzaSyDY1QX-ZzUwRr8BDIwt2FQHWYG0-LmH8zU'
+        apiKey: src_environments_environment_prod__WEBPACK_IMPORTED_MODULE_32__["environment"].api.key
       }), _angular_fire__WEBPACK_IMPORTED_MODULE_27__["AngularFireModule"].initializeApp(firebaseConfig)],
       providers: [_auth_guard__WEBPACK_IMPORTED_MODULE_26__["AuthGuard"], _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_29__["AngularFirestore"], _angular_fire_auth__WEBPACK_IMPORTED_MODULE_28__["AngularFireAuth"], {
         provide: _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["HAMMER_GESTURE_CONFIG"],
@@ -5946,6 +5942,51 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
   },
 
   /***/
+  "./src/environments/environment.prod.ts":
+  /*!**********************************************!*\
+    !*** ./src/environments/environment.prod.ts ***!
+    \**********************************************/
+
+  /*! exports provided: environment */
+
+  /***/
+  function srcEnvironmentsEnvironmentProdTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "environment", function () {
+      return environment;
+    });
+    /* harmony import */
+
+
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! tslib */
+    "./node_modules/tslib/tslib.es6.js");
+
+    var environment = {
+      production: true,
+      Auth: {
+        apiKey: "AIzaSyDY1QX-ZzUwRr8BDIwt2FQHWYG0-LmH8zU",
+        authDomain: "blooddonation-bf54c.firebaseapp.com",
+        databaseURL: "https://blooddonation-bf54c.firebaseio.com",
+        projectId: "blooddonation-bf54c",
+        storageBucket: "blooddonation-bf54c.appspot.com",
+        messagingSenderId: "1030357417339",
+        appId: "1:1030357417339:web:94b6d4085a7e86e511d1de",
+        measurementId: "G-PWYSL42CMR"
+      },
+      api: {
+        key: 'AIzaSyDY1QX-ZzUwRr8BDIwt2FQHWYG0-LmH8zU'
+      }
+    };
+    /***/
+  },
+
+  /***/
   "./src/environments/environment.ts":
   /*!*****************************************!*\
     !*** ./src/environments/environment.ts ***!
@@ -5975,7 +6016,20 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 
     var environment = {
-      production: false
+      production: false,
+      Auth: {
+        apiKey: "AIzaSyDY1QX-ZzUwRr8BDIwt2FQHWYG0-LmH8zU",
+        authDomain: "blooddonation-bf54c.firebaseapp.com",
+        databaseURL: "https://blooddonation-bf54c.firebaseio.com",
+        projectId: "blooddonation-bf54c",
+        storageBucket: "blooddonation-bf54c.appspot.com",
+        messagingSenderId: "1030357417339",
+        appId: "1:1030357417339:web:94b6d4085a7e86e511d1de",
+        measurementId: "G-PWYSL42CMR"
+      },
+      api: {
+        key: 'AIzaSyDY1QX-ZzUwRr8BDIwt2FQHWYG0-LmH8zU'
+      }
     };
     /*
      * For easier debugging in development mode, you can import the following file
@@ -6064,7 +6118,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
   /***/
   function _(module, exports, __webpack_require__) {
     module.exports = __webpack_require__(
-    /*! C:\Angular\Major\src\main.ts */
+    /*! c:\Angular\Major\src\main.ts */
     "./src/main.ts");
     /***/
   }

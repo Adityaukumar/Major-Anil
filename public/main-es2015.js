@@ -1051,8 +1051,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _page_not_found_page_not_found_component__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./page-not-found/page-not-found.component */ "./src/app/page-not-found/page-not-found.component.ts");
 /* harmony import */ var hammerjs__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! hammerjs */ "./node_modules/hammerjs/hammer.js");
 /* harmony import */ var hammerjs__WEBPACK_IMPORTED_MODULE_31___default = /*#__PURE__*/__webpack_require__.n(hammerjs__WEBPACK_IMPORTED_MODULE_31__);
+/* harmony import */ var src_environments_environment_prod__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! src/environments/environment.prod */ "./src/environments/environment.prod.ts");
 
 // COMPONENTS
+
 
 
 
@@ -1094,17 +1096,7 @@ class MyHammerConfig extends _angular_platform_browser__WEBPACK_IMPORTED_MODULE_
     }
 }
 // FIREBASE AUTH CONFIG
-const firebaseConfig = {
-    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-    apiKey: "AIzaSyDY1QX-ZzUwRr8BDIwt2FQHWYG0-LmH8zU",
-    authDomain: "blooddonation-bf54c.firebaseapp.com",
-    databaseURL: "https://blooddonation-bf54c.firebaseio.com",
-    projectId: "blooddonation-bf54c",
-    storageBucket: "blooddonation-bf54c.appspot.com",
-    messagingSenderId: "1030357417339",
-    appId: "1:1030357417339:web:94b6d4085a7e86e511d1de",
-    measurementId: "G-PWYSL42CMR"
-};
+const firebaseConfig = src_environments_environment_prod__WEBPACK_IMPORTED_MODULE_32__["environment"].Auth;
 let AppModule = class AppModule {
 };
 AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -1140,7 +1132,7 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
             _angular_common_http__WEBPACK_IMPORTED_MODULE_7__["HttpClientModule"],
             _material_material_module__WEBPACK_IMPORTED_MODULE_8__["MaterialModule"],
             _agm_core__WEBPACK_IMPORTED_MODULE_25__["AgmCoreModule"].forRoot({
-                apiKey: 'AIzaSyDY1QX-ZzUwRr8BDIwt2FQHWYG0-LmH8zU'
+                apiKey: src_environments_environment_prod__WEBPACK_IMPORTED_MODULE_32__["environment"].api.key
             }),
             _angular_fire__WEBPACK_IMPORTED_MODULE_27__["AngularFireModule"].initializeApp(firebaseConfig)
         ],
@@ -3367,6 +3359,38 @@ WhytodonateComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 /***/ }),
 
+/***/ "./src/environments/environment.prod.ts":
+/*!**********************************************!*\
+  !*** ./src/environments/environment.prod.ts ***!
+  \**********************************************/
+/*! exports provided: environment */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "environment", function() { return environment; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+
+const environment = {
+    production: true,
+    Auth: {
+        apiKey: "AIzaSyDY1QX-ZzUwRr8BDIwt2FQHWYG0-LmH8zU",
+        authDomain: "blooddonation-bf54c.firebaseapp.com",
+        databaseURL: "https://blooddonation-bf54c.firebaseio.com",
+        projectId: "blooddonation-bf54c",
+        storageBucket: "blooddonation-bf54c.appspot.com",
+        messagingSenderId: "1030357417339",
+        appId: "1:1030357417339:web:94b6d4085a7e86e511d1de",
+        measurementId: "G-PWYSL42CMR"
+    },
+    api: {
+        key: 'AIzaSyDY1QX-ZzUwRr8BDIwt2FQHWYG0-LmH8zU'
+    }
+};
+
+
+/***/ }),
+
 /***/ "./src/environments/environment.ts":
 /*!*****************************************!*\
   !*** ./src/environments/environment.ts ***!
@@ -3384,6 +3408,19 @@ __webpack_require__.r(__webpack_exports__);
 
 const environment = {
     production: false,
+    Auth: {
+        apiKey: "AIzaSyDY1QX-ZzUwRr8BDIwt2FQHWYG0-LmH8zU",
+        authDomain: "blooddonation-bf54c.firebaseapp.com",
+        databaseURL: "https://blooddonation-bf54c.firebaseio.com",
+        projectId: "blooddonation-bf54c",
+        storageBucket: "blooddonation-bf54c.appspot.com",
+        messagingSenderId: "1030357417339",
+        appId: "1:1030357417339:web:94b6d4085a7e86e511d1de",
+        measurementId: "G-PWYSL42CMR"
+    },
+    api: {
+        key: 'AIzaSyDY1QX-ZzUwRr8BDIwt2FQHWYG0-LmH8zU'
+    }
 };
 /*
  * For easier debugging in development mode, you can import the following file
@@ -3435,7 +3472,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_3__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Angular\Major\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! c:\Angular\Major\src\main.ts */"./src/main.ts");
 
 
 /***/ })

@@ -1,4 +1,4 @@
 ﻿{
-    "connectionString": "mongodb+srv://dbUser:dbUser@cluster0.5u6uf.mongodb.net/major?retryWrites=true&w=majority",
+    "connectionString": "process.env.MONGODB_URI",
     "secret": "secret"
 }

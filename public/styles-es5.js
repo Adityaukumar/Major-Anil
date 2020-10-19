@@ -447,15 +447,15 @@
   /***/
   function _(module, exports, __webpack_require__) {
     __webpack_require__(
-    /*! C:\Angular\Major\node_modules\@angular\material\prebuilt-themes\indigo-pink.css */
+    /*! c:\Angular\Major\node_modules\@angular\material\prebuilt-themes\indigo-pink.css */
     "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css");
 
     __webpack_require__(
-    /*! C:\Angular\Major\src\styles.css */
+    /*! c:\Angular\Major\src\styles.css */
     "./src/styles.css");
 
     module.exports = __webpack_require__(
-    /*! C:\Angular\Major\node_modules\bootstrap\dist\css\bootstrap.min.css */
+    /*! c:\Angular\Major\node_modules\bootstrap\dist\css\bootstrap.min.css */
     "./node_modules/bootstrap/dist/css/bootstrap.min.css");
     /***/
   }
