@@ -5218,7 +5218,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     !*** ./src/app/services/index.ts ***!
     \***********************************/
 
-  /*! exports provided: AlertService, AuthenticationService, UserService */
+  /*! exports provided: AuthenticationService, UserService, AlertService */
 
   /***/
   function srcAppServicesIndexTs(module, __webpack_exports__, __webpack_require__) {
